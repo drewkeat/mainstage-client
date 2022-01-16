@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import App from "./App";
-import InitialReducer from "./Reducers/InitialReducer";
+import UserReducer from "./Reducers/UserReducer";
 import reportWebVitals from "./reportWebVitals";
 
-const rootReducer = combineReducers({initial: InitialReducer})
+const rootReducer = combineReducers({initial: UserReducer})
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

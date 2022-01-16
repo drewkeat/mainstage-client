@@ -1,5 +1,7 @@
 const initialState = {
-  loading: false
+  userId: 0,
+  username: "",
+  email: "",
 }
 
 export default (state = initialState, { type, payload }) => {

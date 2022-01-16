@@ -1,13 +1,11 @@
 import React from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 
+import RoutesConfig from './RoutesConfig'
 export default function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={"Landing"} />
-        <Route path="/user" element={"User"} />
-      </Routes>
+      <RoutesConfig />
     </Router>
   )
 }
