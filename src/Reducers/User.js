@@ -1,7 +1,9 @@
 const InitialState = {
   userId: 0,
   username: "",
-  fullName: "", 
+  fullName: "",
+  firstName: "",
+  lastName: "", 
   email: "",
 }
 
