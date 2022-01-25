@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { connect } from 'react-redux'
 
-function Landing() {
+import {setCurrentUser} from '../Actions/UserActions'
+
+function Landing({...props}) {
   const [formValues, setformValues] = useState({
     email: "",
     password: "",
@@ -13,19 +16,19 @@ function Landing() {
   };
 
   const handleChange = (e) => {
-    setformValues({
+    setformValues({...formValues,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    props.setCurrentUser(formValues)
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           name="email"
           type="text"
@@ -47,4 +50,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default connect(null, {setCurrentUser})(Landing);

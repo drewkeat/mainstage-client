@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import App from "./App";
-import user from "./Reducers/User";
+import user from "./Reducers/UserReducer";
 import reportWebVitals from "./reportWebVitals";
 
 const rootReducer = combineReducers({user})
