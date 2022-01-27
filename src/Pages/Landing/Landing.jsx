@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from 'react-redux'
+import {Link} from "react-router-dom"
 
 import {setCurrentUser} from '../../Actions/UserActions'
 
@@ -20,7 +21,7 @@ function Landing({...props}) {
       [e.target.name]: e.target.value,
     });
   };
-
+// TODO: Route user to profile on success/display message on error
   const handleSubmit = (e) => {
     e.preventDefault();
     props.setCurrentUser(formValues)
@@ -44,7 +45,9 @@ function Landing({...props}) {
           onChange={handleChange}
         />
         <input type="submit" value="Log In" style={styles} />
-        <input type="button" value="Create Account" style={styles} />
+        <Link to="/newaccount" style={{textDecoration: "none"}} >
+          <input type="button" value="Create Account" style={styles} />
+        </Link>
       </form>
     </div>
   );
