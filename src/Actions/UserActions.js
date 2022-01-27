@@ -1,6 +1,6 @@
 const setCurrentUser = (loginValues) => {
   return (dispatch) =>{
-    fetch("http://localhost:3001/login", {
+    fetch("http://mainstage-backend.herokuapp.com/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
