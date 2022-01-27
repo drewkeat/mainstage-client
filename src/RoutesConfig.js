@@ -1,8 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 
-import {Profile, Landing} from './Pages'
-import NewAccount from './Pages/NewAccount'
+import {Profile, Landing, NewAccount} from './Pages'
 
 
 function RoutesConfig() {

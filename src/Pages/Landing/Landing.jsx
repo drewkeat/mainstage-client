@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { connect } from 'react-redux'
 
-import {setCurrentUser} from '../Actions/UserActions'
+import {setCurrentUser} from '../../Actions/UserActions'
 
 function Landing({...props}) {
   const [formValues, setformValues] = useState({
