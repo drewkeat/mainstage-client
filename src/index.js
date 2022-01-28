@@ -1,3 +1,4 @@
+// QUESTION: What is the error message that always appears on initialization?
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, compose } from "redux";

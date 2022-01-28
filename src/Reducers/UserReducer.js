@@ -1,3 +1,4 @@
+// QUESTION: Why does my store clear when a user reloads? Can I persist the store?
 const InitialState = {
   userId: 0,
   username: "",

@@ -1,6 +1,6 @@
 const initialState = {
   authorized: false,
-  errors: []
+  errors: null
 };
 
 const Auth = (state = initialState, { type, payload }) => {

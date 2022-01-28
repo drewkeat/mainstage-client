@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from 'react-redux'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 import {setCurrentUser} from '../../Actions/UserActions'
 
@@ -21,10 +21,15 @@ function Landing({...props}) {
       [e.target.name]: e.target.value,
     });
   };
+
+  let navigate = useNavigate()
+
 // TODO: Route user to profile on success/display message on error
   const handleSubmit = (e) => {
     e.preventDefault();
     props.setCurrentUser(formValues)
+    // QUESTION: How do I display error messages from API?
+    navigate('/user')
   };
 
   return (
@@ -53,4 +58,4 @@ function Landing({...props}) {
   );
 }
 
-export default connect(null, {setCurrentUser})(Landing);
+export default connect(state => ({errors: state.auth.errors}), {setCurrentUser})(Landing);

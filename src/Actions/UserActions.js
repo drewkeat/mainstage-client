@@ -19,7 +19,7 @@ const setCurrentUser = (loginValues) => {
       window.localStorage.setItem('jwt', json.jwt)
       dispatch({type: 'SET_USER', payload: json.user})
     })
-    .catch(error => {console.log(error.message);})
+    .catch(error => console.log(error.message))
   }
 }
 
