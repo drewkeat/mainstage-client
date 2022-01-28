@@ -1,5 +1,6 @@
-const setCurrentUser = (loginValues) => {
+const setCurrentUser = (loginValues, navigate, setErrors) => {
   return (dispatch) =>{
+    let result = "success"
     fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
@@ -12,14 +13,16 @@ const setCurrentUser = (loginValues) => {
         return resp.json().then(error => {throw new Error(error.message)})
       }
       else {
+        const jwt = resp.headers.get('jwt')
+        window.localStorage.setItem('jwt', jwt)
         return resp.json()
       }
     })
     .then(json => {
-      window.localStorage.setItem('jwt', json.jwt)
-      dispatch({type: 'SET_USER', payload: json.user})
+      dispatch({type: 'SET_USER', payload: json.data})
+      navigate("/user")
     })
-    .catch(error => console.log(error.message))
+    .catch(error => setErrors({messages: [error.message]}))
   }
 }
 

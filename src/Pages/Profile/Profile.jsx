@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Profile({...props}) {
   return (
     <div>
-      <h1>{props.user.full_name}</h1>
+      <h1>{props.user.fullName}</h1>
       <Link to="/">Landing</Link>
     </div>
   )
