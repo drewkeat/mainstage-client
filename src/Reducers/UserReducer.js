@@ -1,9 +1,10 @@
+import * as c from '../Actions/ActionTypes'
 // QUESTION: Why does my store clear when a user reloads? Can I persist the store?
 const InitialState = {}
 
 const User = (state = InitialState, action) => {
   switch (action.type) {
-    case "SET_USER":
+    case c.SET_USER:
       return {
         ...state,
         ...action.payload.attributes,

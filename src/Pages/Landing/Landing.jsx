@@ -9,7 +9,6 @@ function Landing({...props}) {
     email: "",
     password: ""
   });
-  const [errors, setErrors] = useState({messages: []})
 
   const styles = {
     display: "block",
@@ -28,17 +27,16 @@ function Landing({...props}) {
 // TODO: Route user to profile on success/display message on error
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.setCurrentUser(formValues, navigate, setErrors)
+    props.setCurrentUser(formValues, navigate)
     // QUESTION: How do I display error messages from API?
     setformValues({email: "", password: ""})
   };
 
   const renderErrors = () => {
-    if (errors.messages.length){
+    if (props.errors) {
       return (
-        <div style={{margin: "auto", width: "fit-content"}}>
-          <h3>We hit a snag</h3>
-          {errors.messages.map(message => <li key={message}>{message}</li>)}
+        <div style={{margin: "auto", width: "fit-content", textAlign: "center"}}>
+          <p style={{color: "red", textDecoration: "underline"}}>{props.errors}</p>
         </div>
       )
     }
@@ -73,4 +71,4 @@ function Landing({...props}) {
   );
 }
 
-export default connect(null, {setCurrentUser})(Landing);
+export default connect(state => ({errors: state.auth.errors }), {setCurrentUser})(Landing);
