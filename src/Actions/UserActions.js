@@ -1,7 +1,7 @@
 import * as c from "./ActionTypes"
 
 const setCurrentUser = (loginValues, navigate, setErrors) => {
-  return (dispatch) =>{
+  return (dispatch) => {
     let result = "success"
     // fetch("http://mainstage-backend.herokuapp.com/login", {
     fetch("http://localhost:3001/login", {
@@ -23,9 +23,10 @@ const setCurrentUser = (loginValues, navigate, setErrors) => {
     })
     .then(json => {
       dispatch({type: c.SET_USER, payload: json.data})
+      dispatch({type: c.AUTHORIZE})
       navigate("/user")
     })
-    .catch(error => setErrors({messages: [error.message]}))
+    .catch(error => dispatch({type: c.SET_ERRORS, payload: error.message}))
   }
 }
 
