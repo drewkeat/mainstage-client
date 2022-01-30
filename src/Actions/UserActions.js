@@ -1,3 +1,5 @@
+import * as c from "./ActionTypes"
+
 const setCurrentUser = (loginValues, navigate, setErrors) => {
   return (dispatch) =>{
     let result = "success"
@@ -20,7 +22,7 @@ const setCurrentUser = (loginValues, navigate, setErrors) => {
       }
     })
     .then(json => {
-      dispatch({type: 'SET_USER', payload: json.data})
+      dispatch({type: c.SET_USER, payload: json.data})
       navigate("/user")
     })
     .catch(error => setErrors({messages: [error.message]}))
