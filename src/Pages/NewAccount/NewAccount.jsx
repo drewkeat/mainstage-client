@@ -1,21 +1,43 @@
-import React, { Component } from "react";
+import { useState } from "react";
+import { connect } from "react-redux"
+import { useNavigate } from 'react-router-dom'
 
-export class NewAccount extends Component {
-  state = {
+import { createUser } from '../../Actions/UserActions'
+
+export function NewAccount({...props}) {
+  const [userValues, setUserValues] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
     password_confirmation: "",
-  };
+  })
 
-  handleChange = (e) => {
-    return this.setState({[e.target.name]: e.target.value })
+  const handleChange = (e) => {
+    return setUserValues({...userValues, [e.target.name]: e.target.value })
   }
 
-  render() {
-    return (
-      <form>
+  const navigate = useNavigate()
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.createUser(userValues, navigate)
+  }
+
+  const renderErrors = () => {
+    if (props.errors) {
+      return (
+        <div style={{margin: "auto", width: "fit-content", textAlign: "center"}}>
+          {props.errors.map(error => <p key={error} style={{color: "red", textDecoration: "underline"}}>{error}</p>)}
+        </div>
+      )
+    }
+  }
+
+  return (
+    <>
+      {renderErrors()}
+      <form onSubmit={handleSubmit}>
         <h1>Create New Account</h1>
         <div>
           <label htmlFor="first_name">First Name: </label>
@@ -23,7 +45,7 @@ export class NewAccount extends Component {
             type="text"
             name="first_name"
             placeholder="John"
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -32,7 +54,7 @@ export class NewAccount extends Component {
             type="text"
             name="last_name"
             placeholder="Doe"
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -41,7 +63,7 @@ export class NewAccount extends Component {
             type="email"
             name="email"
             placeholder="john.doe@email.com"
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -50,7 +72,7 @@ export class NewAccount extends Component {
             type="password"
             name="password"
             placeholder="secret password"
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -59,13 +81,13 @@ export class NewAccount extends Component {
             type="password"
             name="password_confirmation"
             placeholder="make sure there's no typos"
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
         </div>
         <input type="submit" value="Create Account" />
       </form>
-    );
-  }
+    </>
+  );
 }
 
-export default NewAccount;
+export default connect(state => ({errors: state.auth.errors}), {createUser})(NewAccount);
