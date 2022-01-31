@@ -1,5 +1,6 @@
 // User Actions
 export const SET_USER = "SET_USER"
+export const CREATE_USER = "CREATE_USER"
 // Auth Actions
 export const AUTHORIZE = "AUTHORIZE"
 export const DEAUTHORIZE = "DEAUTHORIZE"
