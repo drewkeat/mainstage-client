@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom"
 
 import {setCurrentUser} from '../../Actions/UserActions'
-import { clearErrors, CLEAR_ERRORS } from '../../Actions/ActionTypes'
 
 function Landing({...props}) {
   const [formValues, setformValues] = useState({
