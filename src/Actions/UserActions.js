@@ -27,7 +27,7 @@ const setCurrentUser = (loginValues, navigate) => {
       dispatch({type: c.SET_USER, payload: json.data})
       dispatch({type: c.AUTHORIZE})
       dispatch({type: c.CLEAR_ERRORS})
-      navigate("/user")
+      navigate("/dashboard")
     })
     .catch(error => dispatch({type: c.SET_ERRORS, payload: error.message.split(",")}))
   }
@@ -57,7 +57,7 @@ const createUser = (userValues, navigate) => {
       dispatch({type: c.CREATE_USER, payload: json.data})
       dispatch({type: c.AUTHORIZE})
       dispatch({type: c.CLEAR_ERRORS})
-      navigate("/user")
+      navigate("/dashboard")
     })
     .catch(error => {
       dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
