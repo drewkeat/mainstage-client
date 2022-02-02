@@ -1,5 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import PrivateRoute from './Components/PrivateRoute'
 
 import {Dashboard, Landing, NewAccount} from './Pages'
 
@@ -8,8 +9,11 @@ function RoutesConfig() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/newaccount" element={<NewAccount/>} />
+        <Route path="/newaccount" element={<NewAccount/>} />
+      <Route path="/" element={<PrivateRoute />} >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/other" element={<p>This is the other route</p>} />
+      </Route>
     </Routes>
   )
 }
