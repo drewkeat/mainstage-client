@@ -29,7 +29,12 @@ const setCurrentUser = (loginValues, navigate) => {
       dispatch({type: c.CLEAR_ERRORS})
       navigate("/dashboard")
     })
-    .catch(error => dispatch({type: c.SET_ERRORS, payload: error.message.split(",")}))
+    .catch(error => {
+      dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
+      setTimeout(() => {
+        dispatch({type: c.CLEAR_ERRORS})
+      }, 3000);
+    })
   }
 }
 

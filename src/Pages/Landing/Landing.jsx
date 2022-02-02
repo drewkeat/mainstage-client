@@ -11,7 +11,6 @@ function Landing({setCurrentUser, ...props}) {
       return (
         <div style={{margin: "auto", width: "fit-content", textAlign: "center"}}>
           {props.errors.map(error => <p style={{color: "red", textDecoration: "underline"}}>{error}</p>)}
-          
         </div>
       )
     }
