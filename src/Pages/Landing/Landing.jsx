@@ -62,9 +62,9 @@ function Landing({...props}) {
           value={formValues.password}
         />
         <input type="submit" value="Log In" style={styles} />
-        <Link to="/newaccount" style={{textDecoration: "none"}} >
+        <Link to="/signup" style={{textDecoration: "none"}} >
           {/* QUESTION: How do I clear errors on navigation? */}
-          <input type="button" value="Create Account" style={styles}/>
+          <input type="button" value="Sign Up" style={styles}/>
         </Link>
       </form>
     </div>

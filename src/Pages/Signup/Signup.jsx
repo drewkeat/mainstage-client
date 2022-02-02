@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { createUser } from '../../Actions/UserActions'
 
-export function NewAccount({...props}) {
+export function Signup({...props}) {
   const [userValues, setUserValues] = useState({
     first_name: "",
     last_name: "",
@@ -71,7 +71,7 @@ export function NewAccount({...props}) {
           <input
             type="password"
             name="password"
-            placeholder="secret password"
+            placeholder="Secret Password"
             onChange={handleChange}
           />
         </div>
@@ -80,7 +80,7 @@ export function NewAccount({...props}) {
           <input
             type="password"
             name="password_confirmation"
-            placeholder="make sure there's no typos"
+            placeholder="Check for typos"
             onChange={handleChange}
           />
         </div>
@@ -90,4 +90,4 @@ export function NewAccount({...props}) {
   );
 }
 
-export default connect(state => ({errors: state.auth.errors}), {createUser})(NewAccount);
+export default connect(state => ({errors: state.auth.errors}), {createUser})(Signup);
