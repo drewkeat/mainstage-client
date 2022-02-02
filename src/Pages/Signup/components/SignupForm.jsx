@@ -2,9 +2,10 @@ import { useState } from "react";
 import { connect } from "react-redux"
 import { useNavigate } from 'react-router-dom'
 
-import { createUser } from '../../Actions/UserActions'
+import { createUser } from "../../../Actions/UserActions";
 
-export function NewAccount({...props}) {
+
+function SignupForm({createUser,...props}) {
   const [userValues, setUserValues] = useState({
     first_name: "",
     last_name: "",
@@ -21,23 +22,12 @@ export function NewAccount({...props}) {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.createUser(userValues, navigate)
+    createUser(userValues, navigate)
   }
 
-  const renderErrors = () => {
-    if (props.errors) {
-      return (
-        <div style={{margin: "auto", width: "fit-content", textAlign: "center"}}>
-          {props.errors.map(error => <p key={error} style={{color: "red", textDecoration: "underline"}}>{error}</p>)}
-        </div>
-      )
-    }
-  }
 
   return (
-    <>
-      {renderErrors()}
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <h1>Create New Account</h1>
         <div>
           <label htmlFor="first_name">First Name: </label>
@@ -71,7 +61,7 @@ export function NewAccount({...props}) {
           <input
             type="password"
             name="password"
-            placeholder="secret password"
+            placeholder="Secret Password"
             onChange={handleChange}
           />
         </div>
@@ -80,14 +70,13 @@ export function NewAccount({...props}) {
           <input
             type="password"
             name="password_confirmation"
-            placeholder="make sure there's no typos"
+            placeholder="Check for typos"
             onChange={handleChange}
           />
         </div>
         <input type="submit" value="Create Account" />
       </form>
-    </>
   );
 }
 
-export default connect(state => ({errors: state.auth.errors}), {createUser})(NewAccount);
+export default connect(null, { createUser })(SignupForm);

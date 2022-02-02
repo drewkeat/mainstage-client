@@ -1,15 +1,19 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import PrivateRoute from './Components/PrivateRoute'
 
-import {Profile, Landing, NewAccount} from './Pages'
+import {Dashboard, Landing, Signup} from './Pages'
 
 
 function RoutesConfig() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/user" element={<Profile />} />
-      <Route path="/newaccount" element={<NewAccount/>} />
+        <Route path="/signup" element={<Signup/>} />
+      <Route path="/" element={<PrivateRoute />} >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/other" element={<p>This is the other route</p>} />
+      </Route>
     </Routes>
   )
 }
