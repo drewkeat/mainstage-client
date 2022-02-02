@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { createUser } from "../../../Actions/UserActions";
 
 
-function SignupForm(props) {
+function SignupForm({createUser,...props}) {
   const [userValues, setUserValues] = useState({
     first_name: "",
     last_name: "",
@@ -22,7 +22,7 @@ function SignupForm(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.createUser(userValues, navigate)
+    createUser(userValues, navigate)
   }
 
 

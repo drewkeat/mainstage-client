@@ -1,8 +1,10 @@
 import { connect } from "react-redux"
+
+import { createUser } from "../../Actions/UserActions";
 import SignupForm from "./components/SignupForm";
 
 
-export function Signup({...props}) {
+export function Signup({createUser,...props}) {
   
   const renderErrors = () => {
     if (props.errors) {
@@ -17,9 +19,9 @@ export function Signup({...props}) {
   return (
     <div>
       {renderErrors()}
-      <SignupForm />
+      <SignupForm createUser={createUser}/>
     </div>
   );
 }
 
-export default connect(state => ({errors: state.auth.errors}))(Signup);
+export default connect(state => ({errors: state.auth.errors}), { createUser })(Signup);

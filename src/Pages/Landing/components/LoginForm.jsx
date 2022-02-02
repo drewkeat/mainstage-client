@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { connect } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom"
 
-import {setCurrentUser} from '../../../Actions/UserActions'
 
-function LoginForm(props) {
+function LoginForm({setCurrentUser,...props}) {
 
   const [formValues, setformValues] = useState({
     email: "",
@@ -27,7 +25,7 @@ function LoginForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.setCurrentUser(formValues, navigate)
+    setCurrentUser(formValues, navigate)
     setformValues({email: "", password: ""})
   };
 
@@ -58,4 +56,4 @@ function LoginForm(props) {
   );
 }
 
-export default connect(null, {setCurrentUser})(LoginForm);
+export default LoginForm;

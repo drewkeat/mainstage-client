@@ -1,8 +1,10 @@
 import { connect } from "react-redux";
+import { setCurrentUser } from "../../Actions/UserActions";
+
 
 import LoginForm from "./components/LoginForm";
 
-function Landing({...props}) {
+function Landing({setCurrentUser, ...props}) {
 
   const renderErrors = () => {
     if (props.errors) {
@@ -18,9 +20,9 @@ function Landing({...props}) {
   return (
     <div>
       {renderErrors()}
-      <LoginForm />
+      <LoginForm setCurrentUser={setCurrentUser}/>
     </div>
   );
 }
 
-export default connect(state => ({errors: state.auth.errors }))(Landing);
+export default connect(state => ({errors: state.auth.errors }), { setCurrentUser })(Landing);
