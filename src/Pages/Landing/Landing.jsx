@@ -1,27 +1,38 @@
+import { Container, Grid, useMediaQuery } from "@mui/material";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../Actions/UserActions";
-
+import StyledLoginForm from "../../Components/StyledLoginForm";
 
 import LoginForm from "./components/LoginForm";
 
-function Landing({setCurrentUser, ...props}) {
-
-  const renderErrors = () => {
-    if (props.errors) {
-      return (
-        <div style={{margin: "auto", width: "fit-content", textAlign: "center"}}>
-          {props.errors.map(error => <p style={{color: "red", textDecoration: "underline"}}>{error}</p>)}
-        </div>
-      )
-    }
-  }
+function Landing({ setCurrentUser, ...props }) {
+  const smScreen = useMediaQuery("(min-width: 700px");
 
   return (
-    <div>
-      {renderErrors()}
-      <LoginForm setCurrentUser={setCurrentUser}/>
-    </div>
+    <Grid
+      container
+      sx={{ height: "100vh", width: "100vw" }}
+      direction={smScreen ? "row" : "column-reverse"}
+    >
+      <Grid
+        item
+        component={Container}
+        xs={6}
+        md={4}
+        sx={{ backgroundColor: "darkblue", minHeight: "50%" }}
+      />
+      <Grid
+        item
+        container
+        xs={6}
+        md={8}
+        alignContent="center"
+        justifyContent={"center"}
+      >
+        <StyledLoginForm setCurrentUser={setCurrentUser} />
+      </Grid>
+    </Grid>
   );
 }
 
-export default connect(state => ({errors: state.auth.errors }), { setCurrentUser })(Landing);
+export default connect(null, { setCurrentUser })(Landing);
