@@ -60,7 +60,7 @@ function StyledLoginForm({ setCurrentUser, ...props }) {
             <Button type="submit" variant="contained" color="success">
               Login
             </Button>
-            <Button variant="contained">Sign Up</Button>
+            <Button variant="contained" onClick={()=> navigate('/signup')}>Sign Up</Button>
           </ButtonGroup>
         </form>
       </Paper>
