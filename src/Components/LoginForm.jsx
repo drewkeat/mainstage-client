@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Required"),
 });
 
-function StyledLoginForm({ setCurrentUser, ...props }) {
+function LoginForm({ setCurrentUser, ...props }) {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -34,10 +34,11 @@ function StyledLoginForm({ setCurrentUser, ...props }) {
       <Typography variant="h2">MAiNSTAGE Login</Typography>
       <br />
       <br />
-      <Paper sx={{ padding: "1rem" }} elevation={5}>
+      <Paper sx={{ padding: "1rem", maxWidth: {xs: '100%', md: '50%'}, margin: 'auto' }} elevation={5}>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             fullWidth
+            margin='dense'
             type="text"
             name="email"
             label="Email:"
@@ -48,6 +49,7 @@ function StyledLoginForm({ setCurrentUser, ...props }) {
           />
           <TextField
             fullWidth
+            margin='dense'
             type="password"
             name="password"
             label="Password:"
@@ -56,8 +58,8 @@ function StyledLoginForm({ setCurrentUser, ...props }) {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.errors.password}
           />
-          <ButtonGroup>
-            <Button type="submit" variant="contained" color="success">
+          <ButtonGroup sx={{marginTop: '1rem'}}>
+            <Button type="submit" variant="contained" color="success" >
               Login
             </Button>
             <Button variant="contained" onClick={()=> navigate('/signup')}>Sign Up</Button>
@@ -68,4 +70,4 @@ function StyledLoginForm({ setCurrentUser, ...props }) {
   );
 }
 
-export default StyledLoginForm;
+export default LoginForm;
