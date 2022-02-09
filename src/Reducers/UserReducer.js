@@ -1,5 +1,6 @@
 import * as c from "../Actions/ActionTypes";
 // QUESTION: Why does my store clear when a user reloads? Can I persist the store?
+// TODO: Convert SET_USER action to set user state based on jwt to implement on user page/ (separate login functionality)
 const InitialState = {};
 
 const User = (state = InitialState, action) => {
