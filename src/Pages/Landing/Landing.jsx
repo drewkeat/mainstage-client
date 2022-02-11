@@ -1,6 +1,6 @@
 import { Container, Grid, useMediaQuery } from "@mui/material";
 import { connect } from "react-redux";
-import { loginUser } from "../../Actions/UserActions";
+import { loginUser } from "../../Actions/AuthActions";
 
 import LoginForm from "../../Components/LoginForm";
 
