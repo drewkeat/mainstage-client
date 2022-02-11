@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Required"),
 });
 
-function LoginForm({ setCurrentUser, ...props }) {
+function LoginForm({ loginUser, ...props }) {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -25,7 +25,7 @@ function LoginForm({ setCurrentUser, ...props }) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      setCurrentUser(values, navigate);
+      loginUser(values, navigate);
     },
   });
 

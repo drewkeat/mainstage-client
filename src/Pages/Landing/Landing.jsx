@@ -1,10 +1,10 @@
 import { Container, Grid, useMediaQuery } from "@mui/material";
 import { connect } from "react-redux";
-import { setCurrentUser } from "../../Actions/UserActions";
+import { loginUser } from "../../Actions/UserActions";
 
 import LoginForm from "../../Components/LoginForm";
 
-function Landing({ setCurrentUser, ...props }) {
+function Landing({ loginUser, ...props }) {
   const smScreen = useMediaQuery("(min-width: 700px");
 
   return (
@@ -28,10 +28,10 @@ function Landing({ setCurrentUser, ...props }) {
         alignContent="center"
         justifyContent={"center"}
       >
-        <LoginForm setCurrentUser={setCurrentUser} />
+        <LoginForm loginUser={loginUser} />
       </Grid>
     </Grid>
   );
 }
 
-export default connect(null, { setCurrentUser })(Landing);
+export default connect(null, { loginUser })(Landing);

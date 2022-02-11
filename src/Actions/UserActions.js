@@ -3,7 +3,7 @@ import * as c from "./ActionTypes"
 const BASE_URL = "http://localhost:3001"
 // const BASE_URL = "http://mainstage-backend.herokuapp.com"
 
-const setCurrentUser = (loginValues, navigate) => {
+const loginUser = (loginValues, navigate) => {
   return (dispatch) => {
     fetch(`${BASE_URL}/login`, {
       method: "POST",
@@ -70,4 +70,4 @@ const createUser = (userValues, navigate) => {
   }
 }
 
-export {setCurrentUser, createUser}
+export {loginUser, createUser}

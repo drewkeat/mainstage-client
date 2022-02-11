@@ -2,7 +2,7 @@ import { useState } from "react";
 import {Link, useNavigate} from "react-router-dom"
 
 
-function LoginForm({setCurrentUser,...props}) {
+function LoginForm({loginUser,...props}) {
 
   const [formValues, setformValues] = useState({
     email: "",
@@ -25,7 +25,7 @@ function LoginForm({setCurrentUser,...props}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCurrentUser(formValues, navigate)
+    loginUser(formValues, navigate)
     setformValues({email: "", password: ""})
   };
 
