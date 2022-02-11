@@ -11,6 +11,10 @@ const Users = (state = InitialState, action) => {
         currentUser: {...action.payload.attributes,
         userId: action.payload.id,}
       };
+    case c.CLEAR_CURRENT_USER:
+      return {
+        ...state, currentUser: {}
+      }
     default:
       return state;
   }
