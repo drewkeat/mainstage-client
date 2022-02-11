@@ -1,6 +1,7 @@
 import { Container, Grid, useMediaQuery } from "@mui/material";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../Actions/UserActions";
+
 import LoginForm from "../../Components/LoginForm";
 
 function Landing({ setCurrentUser, ...props }) {

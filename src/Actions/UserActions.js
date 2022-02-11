@@ -24,7 +24,7 @@ const setCurrentUser = (loginValues, navigate) => {
       }
     })
     .then(json => {
-      dispatch({type: c.SET_USER, payload: json.data})
+      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
       dispatch({type: c.LOGIN})
       dispatch({type: c.CLEAR_ERRORS})
       navigate("/dashboard")
@@ -59,7 +59,7 @@ const createUser = (userValues, navigate) => {
       }
     })
     .then( json => {
-      dispatch({type: c.CREATE_USER, payload: json.data})
+      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
       dispatch({type: c.LOGIN})
       dispatch({type: c.CLEAR_ERRORS})
       navigate("/dashboard")
