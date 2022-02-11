@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { TextField, Grid } from '@mui/material';
 import { useField } from "formik";
 
 const MSTextField = ({
@@ -19,7 +19,7 @@ const MSTextField = ({
   }
 
   return (
-    <TextField { ...configTextfield }/>
+    <TextField { ...configTextfield } label={name}/>
   );
 }
 

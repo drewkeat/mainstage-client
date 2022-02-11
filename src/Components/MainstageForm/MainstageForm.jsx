@@ -8,7 +8,7 @@ function MainstageForm({children, formValues, validations, handleSubmit, elevati
     <Formik
         initialValues={{...formValues}}
         validationSchema={validations}
-        onSubmit={handleSubmit}
+        onSubmit={(values) => handleSubmit(values)}
       >
       <Form>
         <Paper elevation={elevation} sx={{padding: `${padding}rem`, textAlign: 'center'}}>
