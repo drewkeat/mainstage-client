@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-function Dashboard({user,...props}) {
+function Dashboard({user, ...props}) {
   return (
     <div>
       <h1>{user.fullName}</h1>
