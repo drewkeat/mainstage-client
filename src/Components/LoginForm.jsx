@@ -1,3 +1,4 @@
+// TODO: Remove "authenticateJWT tracings"
 import {
   Button,
   ButtonGroup,
@@ -10,12 +11,15 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
+import { connect } from "react-redux";
+import { authenticateJWT } from "../Actions/AuthActions";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email format").required("Required"),
   password: Yup.string().required("Required"),
 });
 
-function LoginForm({ loginUser, ...props }) {
+function LoginForm({ loginUser, authenticateJWT, ...props }) {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -65,9 +69,11 @@ function LoginForm({ loginUser, ...props }) {
             <Button variant="contained" onClick={()=> navigate('/signup')}>Sign Up</Button>
           </ButtonGroup>
         </form>
+        {/* QUESTION: Why does my "Auth" function work here, but not in my Private Route? */}
+        {/* <Button onClick={() => authenticateJWT()}>Auth? </Button> */}
       </Paper>
     </Container>
   );
 }
 
-export default LoginForm;
+export default connect(null, {authenticateJWT})(LoginForm);

@@ -38,4 +38,23 @@ const loginUser = (loginValues, navigate) => {
   }
 }
 
-export {loginUser, }
+const authenticateJWT = () => {
+  const jwt = localStorage.getItem('jwt')
+  return dispatch => {
+    fetch(`${BASE_URL}/authenticate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+    .then(resp => resp.json())
+    .then( json => {
+      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
+      dispatch({type: c.LOGIN})
+      dispatch({type: c.CLEAR_ERRORS})
+    })
+  }
+}
+
+export {loginUser, authenticateJWT }
