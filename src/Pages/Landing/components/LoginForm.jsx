@@ -1,58 +1,64 @@
-import { useState } from "react";
-import {Link, useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import {
+  Grid,
+  Button,
+  ButtonGroup,
+  Container,
+  Typography,
+} from "@mui/material";
 
+import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
+import MSTextField from "../../../Components/MainstageForm/MSTextField";
 
-function LoginForm({setCurrentUser,...props}) {
+function LoginForm({ loginUser, autheticateJWT, ...props }) {
+  const navigate = useNavigate();
 
-  const [formValues, setformValues] = useState({
+  const formValues = {
     email: "",
-    password: ""
+    password: "",
+  };
+
+  const validations = Yup.object().shape({
+    email: Yup.string().email("Invalid email format").required("Required"),
+    password: Yup.string().required("Required"),
   });
 
-  const styles = {
-    display: "block",
-    margin: "auto",
-    marginTop: ".25rem",
-  };
-
-  const handleChange = (e) => {
-    setformValues({...formValues,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  let navigate = useNavigate()
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCurrentUser(formValues, navigate)
-    setformValues({email: "", password: ""})
+  const handleSubmit = (values) => {
+    loginUser(values, navigate);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="email"
-          style={styles}
-          onChange={handleChange}
-          value={formValues.email}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="password"
-          style={styles}
-          onChange={handleChange}
-          value={formValues.password}
-        />
-        <input type="submit" value="Log In" style={styles} />
-        <Link to="/signup" style={{textDecoration: "none"}} >
-          {/* QUESTION: How do I clear errors on navigation? */}
-          <input type="button" value="Sign Up" style={styles}/>
-        </Link>
-      </form>
+    <Container sx={{ textAlign: "center", width: "50%" }}>
+      <Typography variant="h2">MAinStage Login</Typography>
+      <br />
+      <br />
+      <MainstageForm
+        formValues={formValues}
+        validations={validations}
+        handleSubmit={handleSubmit}
+        elevation={5}
+        spacing={[2]}
+        justifyContent="center"
+      >
+        <Grid item xs={12}>
+          <MSTextField fullWidth type="text" name="email" />
+        </Grid>
+        <Grid item xs={12}>
+          <MSTextField fullWidth type="password" name="password" />
+        </Grid>
+        <Grid item>
+          <ButtonGroup>
+            <Button type="submit" variant="contained" color="success">
+              Login
+            </Button>
+            <Button variant="contained" onClick={() => navigate("/signup")}>
+              Create Account
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </MainstageForm>
+    </Container>
   );
 }
 

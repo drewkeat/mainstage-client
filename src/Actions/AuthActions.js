@@ -3,18 +3,14 @@ import * as c from "./ActionTypes"
 // const BASE_URL = "http://localhost:3001"
 const BASE_URL = "http://mainstage-backend.herokuapp.com"
 
-const setCurrentUser = (userData) => {
-  return ({type: c.SET_CURRENT_USER, payload: userData})
-}
-
-const createUser = (userValues, navigate) => {
+const loginUser = (loginValues, navigate) => {
   return (dispatch) => {
-    fetch(`${BASE_URL}/users`, {
+    fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({user: userValues})
+      body: JSON.stringify({user: loginValues})
     })
     .then(resp => {
       if (!resp.ok){
@@ -27,7 +23,7 @@ const createUser = (userValues, navigate) => {
         return resp.json()
       }
     })
-    .then( json => {
+    .then(json => {
       dispatch({type: c.SET_CURRENT_USER, payload: json.data})
       dispatch({type: c.LOGIN})
       dispatch({type: c.CLEAR_ERRORS})
@@ -35,8 +31,30 @@ const createUser = (userValues, navigate) => {
     })
     .catch(error => {
       dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
+      setTimeout(() => {
+        dispatch({type: c.CLEAR_ERRORS})
+      }, 3000);
     })
   }
 }
 
-export {setCurrentUser, createUser}
+const authenticateJWT = () => {
+  const jwt = localStorage.getItem('jwt')
+  return dispatch => {
+    fetch(`${BASE_URL}/authenticate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+    .then(resp => resp.json())
+    .then( json => {
+      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
+      dispatch({type: c.LOGIN})
+      dispatch({type: c.CLEAR_ERRORS})
+    })
+  }
+}
+
+export {loginUser, authenticateJWT }
