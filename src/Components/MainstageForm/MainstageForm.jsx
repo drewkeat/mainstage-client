@@ -4,6 +4,12 @@ import {Formik, Form} from 'formik'
 import React from 'react';
 
 function MainstageForm({children, formValues, validations, handleSubmit, elevation, padding, classes, columns, columnSpacing, component, direction, lg, md, rowSpacing, sm, spacing, sx, wrap, xl, xs, margin, justifyContent, alignContent, header, ...props}) {
+
+  // const renderChildren = (children, spacing) => {
+  //   return children.map(() => {
+  //     <Grid item sx={{padding: `${spacing}rem`}}>child</Grid>
+  //   })
+  // }
   return (
     <Formik
         initialValues={{...formValues}}
@@ -27,7 +33,7 @@ function MainstageForm({children, formValues, validations, handleSubmit, elevati
             rowSpacing={rowSpacing}
             sm={sm}
             spacing={spacing}
-            sx={{...sx}}
+            sx={{...sx, width: '100%', padding: '1rem'}}
             wrap={wrap}
             xl={xl}
             xs={xs}

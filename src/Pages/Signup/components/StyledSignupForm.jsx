@@ -34,13 +34,11 @@ function StyledSignupForm() {
           handleSubmit = {(values) => handleSubmit(values)}
           header="Sign Up"
           elevation={5}
-          spacing={2}
+          spacing={[2]}
           justifyContent='center'
-          padding={1}
-          sx={{margin: 'auto'}}
         >
           <Grid item xs={6}>
-            <MSTextField fullWidth type="text" name="first_name"  />
+            <MSTextField fullWidth type="text" name="first_name" />
           </Grid>
           <Grid item xs={6}>
             <MSTextField fullWidth type="text" name="last_name" />
