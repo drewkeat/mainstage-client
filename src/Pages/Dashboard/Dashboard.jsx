@@ -11,4 +11,4 @@ function Dashboard({user,...props}) {
   )
 }
 
-export default connect(state => ({user: state.user}))(Dashboard)
+export default connect(state => ({user: state.users.currentUser}))(Dashboard)
