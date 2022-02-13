@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Container, Grid, Typography, useMediaQuery, Alert, AlertTitle } from "@mui/material";
 import { connect } from "react-redux";
 import { loginUser } from "../../Actions/AuthActions";
 
@@ -11,15 +11,9 @@ function Landing({ loginUser, ...props }) {
     <Grid
       container
       sx={{ height: "100vh", width: "100vw" }}
-      direction={smScreen ? "row" : "column-reverse"}
+      direction={{xs: 'column-reverse', sm: 'row'}}
     >
-      <Grid
-        item
-        component={Container}
-        xs={6}
-        sm={4}
-        sx={{ backgroundColor: "darkblue", minHeight: "50%"}}
-      />
+      <Grid item xs={6} sm={4} sx={{backgroundColor: 'blue'}}/>
       <Grid
         item
         container

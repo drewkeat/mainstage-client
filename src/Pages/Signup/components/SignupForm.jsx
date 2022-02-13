@@ -35,6 +35,7 @@ function SignupForm({createUser, ...props}) {
         handleSubmit={handleSubmit}
         header="Sign Up"
         elevation={5}
+        // spacing={2}
       >
         <MSTextField fullWidth type="text" name="first_name" xs={6}/>
         <MSTextField fullWidth type="text" name="last_name" xs={6}/>
@@ -47,7 +48,7 @@ function SignupForm({createUser, ...props}) {
           name="password_confirmation"
           xs={6}
         />
-        <Button type="submit" variant="contained" xs={12} textAlign='center'>
+        <Button type="submit" variant="contained" xs={12}>
           Create Account
         </Button>
       </MainstageForm>
