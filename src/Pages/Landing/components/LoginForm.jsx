@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import {
-  Grid,
   Button,
   ButtonGroup,
   Container,
-  Typography,
 } from "@mui/material";
 
 import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
@@ -29,36 +27,25 @@ function LoginForm({ loginUser, autheticateJWT, ...props }) {
   };
 
   return (
-    <Container sx={{ textAlign: "center", width: "50%" }}>
-      <Typography variant="h2">MAinStage Login</Typography>
-      <br />
-      <br />
-      <MainstageForm
-        formValues={formValues}
-        validations={validations}
-        handleSubmit={handleSubmit}
-        elevation={5}
-        spacing={[2]}
-        justifyContent="center"
-      >
-        <Grid item xs={12}>
-          <MSTextField fullWidth type="text" name="email" />
-        </Grid>
-        <Grid item xs={12}>
-          <MSTextField fullWidth type="password" name="password" />
-        </Grid>
-        <Grid item>
-          <ButtonGroup>
-            <Button type="submit" variant="contained" color="success">
-              Login
-            </Button>
-            <Button variant="contained" onClick={() => navigate("/signup")}>
-              Create Account
-            </Button>
-          </ButtonGroup>
-        </Grid>
-      </MainstageForm>
-    </Container>
+    <MainstageForm
+      formValues={formValues}
+      validations={validations}
+      handleSubmit={handleSubmit}
+      elevation={5}
+      justifyContent='center'
+      {...props}
+    >
+      <MSTextField fullWidth type="text" name="email" xs={12}/>
+      <MSTextField fullWidth type="password" name="password" xs={12}/>
+      <ButtonGroup>
+        <Button type="submit" variant="contained" color="success">
+          Login
+        </Button>
+        <Button variant="contained" onClick={() => navigate("/signup")}>
+          Create Account
+        </Button>
+      </ButtonGroup>
+    </MainstageForm>
   );
 }
 

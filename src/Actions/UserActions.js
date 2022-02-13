@@ -1,7 +1,7 @@
 import * as c from "./ActionTypes"
 
-// const BASE_URL = "http://localhost:3001"
-const BASE_URL = "http://mainstage-backend.herokuapp.com"
+const BASE_URL = "http://localhost:3001"
+// const BASE_URL = "http://mainstage-backend.herokuapp.com"
 
 const setCurrentUser = (userData) => {
   return ({type: c.SET_CURRENT_USER, payload: userData})

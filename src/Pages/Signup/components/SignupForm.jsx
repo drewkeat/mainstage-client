@@ -1,82 +1,58 @@
-import { useState } from "react";
-import { connect } from "react-redux"
+import * as Yup from "yup";
+import { Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom'
 
-import { createUser } from "../../../Actions/UserActions";
+import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
+import MSTextField from "../../../Components/MainstageForm/MSTextField";
 
-
-function SignupForm({createUser,...props}) {
-  const [userValues, setUserValues] = useState({
+function SignupForm({createUser, ...props}) {
+  const formValues = {
     first_name: "",
     last_name: "",
     email: "",
     password: "",
     password_confirmation: "",
-  })
+  };
 
-  const handleChange = (e) => {
-    return setUserValues({...userValues, [e.target.name]: e.target.value })
-  }
+  const validations = Yup.object().shape({
+    first_name: Yup.string().required("Required"),
+    last_name: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid email format").required("Required"),
+    password: Yup.string().required("Required"),
+    password_confirmation: Yup.string().required("Required"),
+  });
 
   const navigate = useNavigate()
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    createUser(userValues, navigate)
-  }
-
+  const handleSubmit = (values) => {
+    createUser(values, navigate);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-        <h1>Create New Account</h1>
-        <div>
-          <label htmlFor="first_name">First Name: </label>
-          <input
-            type="text"
-            name="first_name"
-            placeholder="John"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="last_name">Last Name: </label>
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Doe"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email Address: </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="john.doe@email.com"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Secret Password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password_confirmation">Confirm Password: </label>
-          <input
-            type="password"
-            name="password_confirmation"
-            placeholder="Check for typos"
-            onChange={handleChange}
-          />
-        </div>
-        <input type="submit" value="Create Account" />
-      </form>
+    <div>
+      <MainstageForm
+        formValues={formValues}
+        validations={validations}
+        handleSubmit={handleSubmit}
+        header="Sign Up"
+        elevation={5}
+      >
+        <MSTextField fullWidth type="text" name="first_name" xs={6}/>
+        <MSTextField fullWidth type="text" name="last_name" xs={6}/>
+        <MSTextField fullWidth type="email" name="email" xs={6}/>
+        <div xs={6}></div>
+        <MSTextField fullWidth type="password" name="password" xs={6} />
+        <MSTextField
+          fullWidth
+          type="password"
+          name="password_confirmation"
+          xs={6}
+        />
+        <Button type="submit" variant="contained" xs={12} textAlign='center'>
+          Create Account
+        </Button>
+      </MainstageForm>
+    </div>
   );
 }
 
-export default connect(null, { createUser })(SignupForm);
+export default SignupForm;

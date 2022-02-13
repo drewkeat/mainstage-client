@@ -3,48 +3,41 @@ import {Formik, Form} from 'formik'
 
 import React from 'react';
 
-function MainstageForm({children, formValues, validations, handleSubmit, elevation, padding, classes, columns, columnSpacing, component, direction, lg, md, rowSpacing, sm, spacing, sx, wrap, xl, xs, margin, justifyContent, alignContent, header, ...props}) {
+function MainstageForm({children, formValues, validations, handleSubmit, header, elevation, width, alignSelf, ...props}) { 
 
-  // const renderChildren = (children, spacing) => {
-  //   return children.map(() => {
-  //     <Grid item sx={{padding: `${spacing}rem`}}>child</Grid>
-  //   })
-  // }
+  const renderChildren = children.map((child, index) => {
+    const {name, type, fullWidth, variant, ...gridProps} = child.props
+
+    return (
+    <Grid item key={index} {...gridProps}>
+      {child}
+    </Grid>)
+  })
+
   return (
-    <Formik
-        initialValues={{...formValues}}
-        validationSchema={validations}
-        onSubmit={(values) => handleSubmit(values)}
-      >
-      <Form>
-        <Paper elevation={elevation} sx={{padding: `${padding}rem`, textAlign: 'center'}}>
-          <Typography variant='h3'>
-            {header}
-          </Typography>
-          <br />
-          <Grid container
-            classes={classes}
-            columns={columns}
-            columnSpacing={columnSpacing}
-            component={component}
-            direction={direction}
-            lg={lg}
-            md={md}
-            rowSpacing={rowSpacing}
-            sm={sm}
-            spacing={spacing}
-            sx={{...sx, width: '100%', padding: '1rem'}}
-            wrap={wrap}
-            xl={xl}
-            xs={xs}
-            justifyContent={justifyContent}
-            alignContent={alignContent}
+    <Paper elevation={elevation} sx={{padding: '1rem', maxWidth: {width}, alignSelf: {alignSelf}}} >
+      <Formik
+            initialValues={{...formValues}}
+            validationSchema={validations}
+            onSubmit={(values) => handleSubmit(values)}
           >
-            {children}
+        <Form>
+
+          <Grid container {...props} maxWidth='100%'>
+            {header ?
+                <Grid item xs={12} alignContent='center'>
+                  <Typography variant='h3' textAlign='center'>
+                      {header}
+                  </Typography>
+                </Grid>
+              :
+              null
+            }
+            {renderChildren}
           </Grid>
-        </Paper>
-      </Form>
-    </Formik>
+        </Form>
+      </Formik>
+    </Paper>
   );
 }
 

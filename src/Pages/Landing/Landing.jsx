@@ -1,4 +1,4 @@
-import { Container, Grid, useMediaQuery } from "@mui/material";
+import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { connect } from "react-redux";
 import { loginUser } from "../../Actions/AuthActions";
 
@@ -17,18 +17,21 @@ function Landing({ loginUser, ...props }) {
         item
         component={Container}
         xs={6}
-        md={4}
-        sx={{ backgroundColor: "darkblue", minHeight: "50%" }}
+        sm={4}
+        sx={{ backgroundColor: "darkblue", minHeight: "50%"}}
       />
       <Grid
         item
         container
         xs={6}
-        md={8}
-        alignContent="center"
-        justifyContent={"center"}
+        sm={8}
+        direction='column'
+        alignContent='stretch'
+        justifyContent='center'
+        gap={2}
       >
-        <LoginForm loginUser={loginUser} />
+        <Typography variant="h2" textAlign='center'>MAiNSTAGE <br/>Login</Typography>
+        <LoginForm loginUser={loginUser} width='50%' alignSelf='center' gap={2}/>
       </Grid>
     </Grid>
   );

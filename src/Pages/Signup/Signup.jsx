@@ -1,12 +1,12 @@
 import { connect } from "react-redux"
 
 import { createUser } from "../../Actions/UserActions";
-import StyledSignupForm from './components/StyledSignupForm'
+import SignupForm from './components/SignupForm'
 
 
 export function Signup({createUser,...props}) {
   return(
-    <StyledSignupForm createUser={ createUser }/>
+    <SignupForm createUser={ createUser }/>
   )
 }
 
