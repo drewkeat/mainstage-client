@@ -14,18 +14,13 @@ function Landing({ loginUser, ...props }) {
       direction={{xs: 'column-reverse', sm: 'row'}}
     >
       <Grid item xs={6} sm={4} sx={{backgroundColor: 'blue'}}/>
-      <Grid
-        item
-        container
-        xs={6}
-        sm={8}
-        direction='column'
-        alignContent='stretch'
-        justifyContent='center'
-        gap={2}
-      >
-        <Typography variant="h2" textAlign='center'>MAiNSTAGE <br/>Login</Typography>
-        <LoginForm loginUser={loginUser} width='50%' alignSelf='center' gap={2}/>
+      <Grid item container xs={6} sm={8} justifyContent='center' alignContent='center'>
+        <Grid item xs={12}>
+          <Typography variant="h2" textAlign='center'>MAiNSTAGE <br/>Login</Typography>
+        </Grid>
+        <Grid item xs={6}> 
+          <LoginForm loginUser={loginUser} width='50%' alignSelf='center' gap={2}/>
+        </Grid>
       </Grid>
     </Grid>
   );

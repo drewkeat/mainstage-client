@@ -15,7 +15,7 @@ function MainstageForm({children, formValues, validations, handleSubmit, header,
   })
 
   return (
-    <Paper elevation={elevation} sx={{padding: '1rem', maxWidth: {width}, alignSelf: {alignSelf}}} >
+    <Paper elevation={elevation} sx={{padding: '1rem', maxWidth: {width}, minWidth:'fit-content', alignSelf: {alignSelf}}} >
       <Formik
             initialValues={{...formValues}}
             validationSchema={validations}
