@@ -1,14 +1,29 @@
-import { connect } from 'react-redux';
+import { useEffect } from 'react'
+import { connect } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
+import { authenticateJWT } from '../Actions/AuthActions'
 
 
-function PrivateRoute({...props}) {
-  const authenticated = !!localStorage.getItem("jwt")
-  const setError = () => {
-    props.dispatch({type: "SET_ERRORS", payload: ["You must login to access that page"]})
+function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
+  // const authenticate = () => {authenticateJWT(localStorage.getItem('jwt'))}
+  
+  const jwt = localStorage.getItem('jwt')
+
+  const verifyJWT = async () => {
+      if (jwt){
+        await authenticateJWT(jwt)
+      }
+    }
+  
+  useEffect(() => verifyJWT(), [])
+
+  if (!isLoggedIn && errors) {
+    return <Navigate to='/'/>
+  } else if (!isLoggedIn) {
+    return "Loading"
+  } else {
+    return <Outlet />
   }
-  return authenticated ? <Outlet /> : (setError(), <Navigate to="/" />);
 }
 
-export default connect(state => ({auth: state.auth.authorized}))(PrivateRoute);
-
+export default connect(state => ({isLoggedIn: state.auth.isLoggedIn, errors: state.auth.errors}), {authenticateJWT})(PrivateRoute);

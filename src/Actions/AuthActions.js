@@ -31,16 +31,12 @@ const loginUser = (loginValues, navigate) => {
     })
     .catch(error => {
       dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
-      setTimeout(() => {
-        dispatch({type: c.CLEAR_ERRORS})
-      }, 3000);
     })
   }
 }
 
-const authenticateJWT = () => {
-  const jwt = localStorage.getItem('jwt')
-  return dispatch => {
+const authenticateJWT = (jwt) => {
+  return (dispatch) => {
     fetch(`${BASE_URL}/authenticate`, {
       method: 'POST',
       headers: {
@@ -48,11 +44,22 @@ const authenticateJWT = () => {
         'Authorization': `Bearer ${jwt}`
       }
     })
-    .then(resp => resp.json())
+    .then(resp => {
+      if (!resp.ok) {
+        return resp.json().then(error => {
+          throw new Error(error.message)
+        })
+      } else {
+        return resp.json()
+      }
+    })
     .then( json => {
       dispatch({type: c.SET_CURRENT_USER, payload: json.data})
       dispatch({type: c.LOGIN})
       dispatch({type: c.CLEAR_ERRORS})
+    })
+    .catch(error => {
+      dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
     })
   }
 }

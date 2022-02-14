@@ -19,7 +19,7 @@ function Landing({ loginUser, ...props }) {
           <Typography variant="h2" textAlign='center'>MAiNSTAGE <br/>Login</Typography>
         </Grid>
         <Grid item xs={6}> 
-          <LoginForm loginUser={loginUser} width='50%' alignSelf='center' gap={2}/>
+          <LoginForm loginUser={loginUser} width='50%' alignSelf='center'/>
         </Grid>
       </Grid>
     </Grid>
