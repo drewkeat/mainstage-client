@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import NavBar from '../../Components/NavBar/NavBar'
 
 function Dashboard({user, ...props}) {
   return (
     <div>
+      <NavBar/>
       <h1>{user.fullName}</h1>
-      <Link to="/">Landing</Link>
     </div>
   )
 }
