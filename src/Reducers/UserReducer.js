@@ -1,6 +1,6 @@
 import * as c from "../Actions/ActionTypes";
-// QUESTION: Why does my store clear when a user reloads? Can I persist the store?
-// TODO: Convert SET_CURRENT_USER action to set user state based on jwt to implement on user page/ (separate login functionality)
+// QUESTION:  Should I create reducers and actions for each of my models?
+// QUESTION:  How often should I be making API calls throughout a user's experience?  Should I call all of the productions on the initial login request?
 const InitialState = {};
 
 const Users = (state = InitialState, action) => {
