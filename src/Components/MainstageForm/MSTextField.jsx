@@ -1,26 +1,20 @@
-import React from 'react';
-import { TextField, Grid } from '@mui/material';
+import React from "react";
+import { TextField } from "@mui/material";
 import { useField } from "formik";
 
-const MSTextField = ({
-  name,
-  ...props
-}) => {
-
+const MSTextField = ({ name, ...props }) => {
   const [field, meta] = useField(name);
   const configTextfield = {
     ...field,
-    ...props
-  }
+    ...props,
+  };
 
   if (meta && meta.touched && meta.error) {
     configTextfield.error = true;
     configTextfield.helperText = meta.error;
   }
 
-  return (
-    <TextField { ...configTextfield } label={name}/>
-  );
-}
+  return <TextField {...configTextfield} label={name} />;
+};
 
 export default MSTextField;

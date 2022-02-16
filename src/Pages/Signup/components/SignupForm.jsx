@@ -28,31 +28,29 @@ function SignupForm({createUser, ...props}) {
   };
 
   return (
-    <div>
-      <MainstageForm
-        formValues={formValues}
-        validations={validations}
-        handleSubmit={handleSubmit}
-        header="Sign Up"
-        elevation={5}
-        // spacing={2}
-      >
-        <MSTextField fullWidth type="text" name="first_name" xs={6}/>
-        <MSTextField fullWidth type="text" name="last_name" xs={6}/>
-        <MSTextField fullWidth type="email" name="email" xs={6}/>
-        <div xs={6}></div>
-        <MSTextField fullWidth type="password" name="password" xs={6} />
-        <MSTextField
-          fullWidth
-          type="password"
-          name="password_confirmation"
-          xs={6}
-        />
-        <Button type="submit" variant="contained" xs={12}>
-          Create Account
-        </Button>
-      </MainstageForm>
-    </div>
+    <MainstageForm
+      formValues={formValues}
+      validations={validations}
+      handleSubmit={handleSubmit}
+      header="Sign Up"
+      elevation={5}
+      {...props}
+    >
+      <MSTextField fullWidth type="text" name="first_name" xs={6}/>
+      <MSTextField fullWidth type="text" name="last_name" xs={6}/>
+      <MSTextField fullWidth type="email" name="email" xs={6}/>
+      <div xs={6}></div>
+      <MSTextField fullWidth type="password" name="password" xs={6} />
+      <MSTextField
+        fullWidth
+        type="password"
+        name="password_confirmation"
+        xs={6}
+      />
+      <Button type="submit" variant="contained" xs={12}>
+        Create Account
+      </Button>
+    </MainstageForm>
   );
 }
 

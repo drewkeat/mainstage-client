@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar, Typography } from "@mui/material"
+import { AppBar, Toolbar, Typography } from "@mui/material"
 import { Menu } from "@mui/icons-material"
 import { IconButton } from "@mui/material"
 import { Outlet } from "react-router-dom"
@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom"
 function NavBar({children, ...props}) {
   return (
     <div>
-      <AppBar position="sticky" elevation={3}>
+      <AppBar position='fixed' elevation={3}>
         <Toolbar sx={{width: '100%'}}>
           <Typography variant="h3">MAiNSTAGE</Typography>
           <IconButton
@@ -19,6 +19,7 @@ function NavBar({children, ...props}) {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Toolbar/>
       <Outlet />
     </div>
   )

@@ -15,7 +15,7 @@ function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
       }
     }
   
-  useEffect(() => verifyJWT(), [])
+  useEffect(() => verifyJWT, [])
 
   if (!isLoggedIn && errors) {
     return <Navigate to='/'/>
