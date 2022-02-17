@@ -1,4 +1,4 @@
-import * as c from '../Actions/ActionTypes'
+import * as ACTION from '../Actions/ActionTypes'
 
 const initialState = {
   isLoggedIn: false,
@@ -7,13 +7,13 @@ const initialState = {
 
 const Auth = (state = initialState, { type, payload }) => {
   switch (type) {
-    case c.LOGIN:
+    case ACTION.LOGIN:
       return {...state, isLoggedIn: true }
-    case c.LOGOUT:
+    case ACTION.LOGOUT:
       return {...state, isLoggedIn: false }
-    case c.SET_ERRORS:
+    case ACTION.SET_ERRORS:
       return {...state, errors: payload}
-    case c.CLEAR_ERRORS:
+    case ACTION.CLEAR_ERRORS:
       return {...state, errors: null}
     default:
       return state;

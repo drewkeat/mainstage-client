@@ -1,4 +1,4 @@
-import * as c from "./ActionTypes"
+import * as ACTION from "./ActionTypes"
 import BASE_URL from '../api'
 
 const loginUser = (loginValues, navigate) => {
@@ -22,13 +22,13 @@ const loginUser = (loginValues, navigate) => {
       }
     })
     .then(json => {
-      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
-      dispatch({type: c.LOGIN})
-      dispatch({type: c.CLEAR_ERRORS})
+      dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
+      dispatch({type: ACTION.LOGIN})
+      dispatch({type: ACTION.CLEAR_ERRORS})
       navigate("/dashboard")
     })
     .catch(error => {
-      dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
+      dispatch({type: ACTION.SET_ERRORS, payload: error.message.split(",")})
     })
   }
 }
@@ -52,12 +52,12 @@ const authenticateJWT = (jwt) => {
       }
     })
     .then( json => {
-      dispatch({type: c.SET_CURRENT_USER, payload: json.data})
-      dispatch({type: c.LOGIN})
-      dispatch({type: c.CLEAR_ERRORS})
+      dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
+      dispatch({type: ACTION.LOGIN})
+      dispatch({type: ACTION.CLEAR_ERRORS})
     })
     .catch(error => {
-      dispatch({type: c.SET_ERRORS, payload: error.message.split(",")})
+      dispatch({type: ACTION.SET_ERRORS, payload: error.message.split(",")})
     })
   }
 }

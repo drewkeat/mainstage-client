@@ -2,7 +2,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 
 import PrivateRoute from './Components/PrivateRoute'
-import {Dashboard, Landing, Signup} from './Pages'
+import {Dashboard, Landing, Signup} from './Containers'
 
 
 function RoutesConfig() {
