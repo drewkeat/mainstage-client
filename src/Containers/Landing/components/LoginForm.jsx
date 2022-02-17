@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import {
   Button,
   ButtonGroup,
+  useMediaQuery
 } from "@mui/material";
 
 import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
@@ -10,6 +11,7 @@ import MSTextField from "../../../Components/MainstageForm/MSTextField";
 
 function LoginForm({ loginUser, autheticateJWT, ...props }) {
   const navigate = useNavigate();
+  const smScreen = useMediaQuery("(min-width:600px)")
 
   const formValues = {
     email: "",
@@ -36,7 +38,7 @@ function LoginForm({ loginUser, autheticateJWT, ...props }) {
     >
       <MSTextField fullWidth type="text" name="email" xs={12}/>
       <MSTextField fullWidth type="password" name="password" xs={12}/>
-      <ButtonGroup>
+      <ButtonGroup orientation={smScreen ? 'horizontal' : 'vertical'} >
         <Button type="submit" variant="contained" color="success">
           Login
         </Button>

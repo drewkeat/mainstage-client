@@ -1,13 +1,13 @@
-import {Alert, Grid, Paper, Typography} from '@mui/material'
+import {Alert, Container, Grid, Paper, Typography} from '@mui/material'
 import {Formik, Form} from 'formik'
 import {connect} from 'react-redux'
 
 import React from 'react';
 
-function MainstageForm({children, errors, formValues, validations, handleSubmit, header, elevation, width, alignSelf, dispatch, ...props}) { 
+function MainstageForm({children, errors, formValues, validations, handleSubmit, header, elevation, width, minWidth, alignSelf, dispatch, ...props}) { 
 
   const renderChildren = children.map((child, index) => {
-    const {name, type, fullWidth, variant, ...gridProps} = child.props
+    const {name, type, fullWidth, variant, sx, ...gridProps} = child.props
 
     return (
     <Grid item key={index} {...gridProps}>
@@ -29,7 +29,7 @@ function MainstageForm({children, errors, formValues, validations, handleSubmit,
   }
 
   return (
-    <Paper elevation={elevation} sx={{padding: '1rem', maxWidth: {width}, minWidth:'fit-content', alignSelf: {alignSelf}}} >
+    <Container component={Paper} elevation={elevation} sx={{padding: '1rem', maxWidth: {width}}} >
       <Formik
             initialValues={{...formValues}}
             validationSchema={validations}
@@ -52,7 +52,7 @@ function MainstageForm({children, errors, formValues, validations, handleSubmit,
           </Grid>
         </Form>
       </Formik>
-    </Paper>
+    </Container>
   );
 }
 

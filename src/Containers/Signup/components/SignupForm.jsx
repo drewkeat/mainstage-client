@@ -1,11 +1,11 @@
 import * as Yup from "yup";
 import { Button } from "@mui/material";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
 import MSTextField from "../../../Components/MainstageForm/MSTextField";
 
-function SignupForm({createUser, ...props}) {
+function SignupForm({ createUser, ...props }) {
   const formValues = {
     first_name: "",
     last_name: "",
@@ -22,7 +22,7 @@ function SignupForm({createUser, ...props}) {
     password_confirmation: Yup.string().required("Required"),
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = (values) => {
     createUser(values, navigate);
   };
@@ -34,12 +34,20 @@ function SignupForm({createUser, ...props}) {
       handleSubmit={handleSubmit}
       header="Sign Up"
       elevation={5}
+      justifyContent="center"
       {...props}
     >
-      <MSTextField fullWidth type="text" name="first_name" xs={6}/>
-      <MSTextField fullWidth type="text" name="last_name" xs={6}/>
-      <MSTextField fullWidth type="email" name="email" xs={6}/>
-      <div xs={6}></div>
+      <MSTextField fullWidth type="text" name="first_name" xs={6} />
+      <MSTextField fullWidth type="text" name="last_name" xs={6} />
+      <MSTextField
+        fullWidth
+        container
+        type="email"
+        name="email"
+        xs={12}
+        justifyContent="center"
+        sx={{ maxWidth: "80%" }}
+      />
       <MSTextField fullWidth type="password" name="password" xs={6} />
       <MSTextField
         fullWidth
@@ -47,7 +55,7 @@ function SignupForm({createUser, ...props}) {
         name="password_confirmation"
         xs={6}
       />
-      <Button type="submit" variant="contained" xs={12}>
+      <Button type="submit" variant="contained" xs={"fit-content"}>
         Create Account
       </Button>
     </MainstageForm>
