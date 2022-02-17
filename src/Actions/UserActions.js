@@ -1,7 +1,5 @@
 import * as c from "./ActionTypes"
-
-const BASE_URL = "http://localhost:3001"
-// const BASE_URL = "http://mainstage-backend.herokuapp.com"
+import BASE_URL from '../api'
 
 const setCurrentUser = (userData) => {
   return ({type: c.SET_CURRENT_USER, payload: userData})
