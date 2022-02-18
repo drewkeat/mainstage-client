@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import {
-  Button,
-  ButtonGroup,
-  useMediaQuery
-} from "@mui/material";
+import { Button, ButtonGroup, useMediaQuery } from "@mui/material";
 
 import MainstageForm from "../../../Components/MainstageForm/MainstageForm";
 import MSTextField from "../../../Components/MainstageForm/MSTextField";
 
-function LoginForm({ loginUser, autheticateJWT, ...props }) {
+function LoginForm({ loginUser, loading, autheticateJWT, ...props }) {
   const navigate = useNavigate();
-  const smScreen = useMediaQuery("(min-width:600px)")
+  const smScreen = useMediaQuery("(min-width:600px)");
 
   const formValues = {
     email: "",
@@ -33,13 +29,14 @@ function LoginForm({ loginUser, autheticateJWT, ...props }) {
       validations={validations}
       handleSubmit={handleSubmit}
       elevation={5}
-      justifyContent='center'
+      justifyContent="center"
+      loading={loading}
       {...props}
     >
-      <MSTextField fullWidth type="text" name="email" xs={12}/>
-      <MSTextField fullWidth type="password" name="password" xs={12}/>
-      <ButtonGroup orientation={smScreen ? 'horizontal' : 'vertical'} >
-        <Button type="submit" variant="contained" color="success">
+      <MSTextField fullWidth type="text" name="email" xs={12} />
+      <MSTextField fullWidth type="password" name="password" xs={12} />
+      <ButtonGroup orientation={smScreen ? "horizontal" : "vertical"}>
+        <Button type="submit" variant="contained" color="secondary">
           Login
         </Button>
         <Button variant="contained" onClick={() => navigate("/signup")}>

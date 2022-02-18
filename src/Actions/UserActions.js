@@ -7,6 +7,7 @@ const setCurrentUser = (userData) => {
 
 const createUser = (userValues, navigate) => {
   return (dispatch) => {
+    dispatch({type: ACTION.FETCHING})
     fetch(`${BASE_URL}/users`, {
       method: "POST",
       headers: {
@@ -29,10 +30,12 @@ const createUser = (userValues, navigate) => {
       dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
       dispatch({type: ACTION.LOGIN})
       dispatch({type: ACTION.CLEAR_ERRORS})
+      dispatch({type: ACTION.FETCH_COMPLETE})
       navigate("/dashboard")
     })
     .catch(error => {
       dispatch({type: ACTION.SET_ERRORS, payload: error.message.split(",")})
+      dispatch({type: ACTION.FETCH_COMPLETE})
     })
   }
 }

@@ -2,12 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   Box,
-  Container,
-  Paper,
-  Card,
-  CardHeader,
-  CardMedia,
-  CardContent,
   Grid,
   Typography,
 } from "@mui/material";
