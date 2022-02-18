@@ -12,7 +12,8 @@ function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
       }
     }; 
     authenticate(localStorage.getItem('jwt'))
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   if (!isLoggedIn && errors) {
     return <Navigate to='/'/>
