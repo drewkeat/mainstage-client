@@ -3,6 +3,7 @@ import BASE_URL from '../api'
 
 const loginUser = (loginValues, navigate) => {
   return (dispatch) => {
+    dispatch({type: ACTION.FETCHING})
     fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: {
@@ -25,16 +26,19 @@ const loginUser = (loginValues, navigate) => {
       dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
       dispatch({type: ACTION.LOGIN})
       dispatch({type: ACTION.CLEAR_ERRORS})
+      dispatch({type: ACTION.FETCH_COMPLETE})
       navigate("/dashboard")
     })
     .catch(error => {
       dispatch({type: ACTION.SET_ERRORS, payload: error.message.split(",")})
+      dispatch({type: ACTION.FETCH_COMPLETE})
     })
   }
 }
 
 const authenticateJWT = (jwt) => {
   return (dispatch) => {
+    dispatch({type: ACTION.FETCHING})
     fetch(`${BASE_URL}/authenticate`, {
       method: 'POST',
       headers: {
@@ -55,9 +59,11 @@ const authenticateJWT = (jwt) => {
       dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
       dispatch({type: ACTION.LOGIN})
       dispatch({type: ACTION.CLEAR_ERRORS})
+      dispatch({type: ACTION.FETCH_COMPLETE})
     })
     .catch(error => {
       dispatch({type: ACTION.SET_ERRORS, payload: error.message.split(",")})
+      dispatch({type: ACTION.FETCH_COMPLETE})
     })
   }
 }

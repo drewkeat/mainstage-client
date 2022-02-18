@@ -1,10 +1,9 @@
 import * as ACTION from "../Actions/ActionTypes";
-// QUESTION:  Should I create reducers and actions for each of my models?
-// QUESTION:  How often should I be making API calls throughout a user's experience?  Should I call all of the productions on the initial login request?
 const InitialState = {};
 
 const Users = (state = InitialState, action) => {
   switch (action.type) {
+    // TODO: Adjust reducer to set relationships from api serializer
     case ACTION.SET_CURRENT_USER:
       return {
         ...state,
