@@ -8,7 +8,7 @@ function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
   useEffect(() => {
     const authenticate = async (jwt) => {
       if (jwt) {
-        return authenticateJWT(jwt)
+        return await authenticateJWT(jwt)
       }
     }; 
     authenticate(localStorage.getItem('jwt'))
