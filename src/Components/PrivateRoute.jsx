@@ -5,14 +5,14 @@ import { authenticateJWT } from '../Actions/AuthActions'
 
 
 function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
-  const jwt = localStorage.getItem('jwt')
-  const authenticate = async () => {
-    if (jwt) {
-      await authenticateJWT(jwt)
-    }
-  }
-  
-  useEffect(() => authenticate())
+  useEffect(() => {
+    const authenticate = async (jwt) => {
+      if (jwt) {
+        return authenticateJWT(jwt)
+      }
+    }; 
+    authenticate(localStorage.getItem('jwt'))
+  })
 
   if (!isLoggedIn && errors) {
     return <Navigate to='/'/>
