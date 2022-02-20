@@ -5,15 +5,22 @@ const Users = (state = InitialState, action) => {
   switch (action.type) {
     // TODO: Adjust reducer to set relationships from api serializer
     case ACTION.SET_CURRENT_USER:
+      let userId = Object.keys(action.payload)[0];
+      let currentUser = action.payload[userId];
       return {
         ...state,
-        currentUser: {...action.payload.attributes,
-        userId: action.payload.id,}
+        currentUser: { ...currentUser },
       };
     case ACTION.CLEAR_CURRENT_USER:
       return {
-        ...state, currentUser: {}
-      }
+        ...state,
+        currentUser: {},
+      };
+    case ACTION.SET_USERS:
+      return {
+        ...state,
+        users: { ...action.payload },
+      };
     default:
       return state;
   }

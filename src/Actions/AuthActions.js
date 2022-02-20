@@ -1,4 +1,5 @@
 import * as ACTION from "./ActionTypes"
+import normalize from 'json-api-normalizer'
 import BASE_URL from '../api'
 
 const loginUser = (loginValues, navigate) => {
@@ -23,7 +24,8 @@ const loginUser = (loginValues, navigate) => {
       }
     })
     .then(json => {
-      dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
+      let userData = normalize(json)
+      dispatch({type: ACTION.SET_CURRENT_USER, payload: userData.user})
       dispatch({type: ACTION.LOGIN})
       dispatch({type: ACTION.CLEAR_ERRORS})
       dispatch({type: ACTION.FETCH_COMPLETE})
@@ -56,7 +58,8 @@ const authenticateJWT = (jwt) => {
       }
     })
     .then( json => {
-      dispatch({type: ACTION.SET_CURRENT_USER, payload: json.data})
+      let userData = normalize(json)
+      dispatch({type: ACTION.SET_CURRENT_USER, payload: userData.user})
       dispatch({type: ACTION.LOGIN})
       dispatch({type: ACTION.CLEAR_ERRORS})
       dispatch({type: ACTION.FETCH_COMPLETE})
