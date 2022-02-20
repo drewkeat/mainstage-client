@@ -19,7 +19,7 @@ const Users = (state = InitialState, action) => {
     case ACTION.SET_USERS:
       return {
         ...state,
-        users: { ...action.payload },
+        all: { ...action.payload },
       };
     default:
       return state;
