@@ -1,6 +1,5 @@
 import * as ACTION from "./ActionTypes"
 import normalize from 'json-api-normalizer'
-import BASE_URL from '../api'
 
 import fetchFrom from '../Helpers/fetchFrom'
 

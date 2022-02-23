@@ -13,7 +13,26 @@ import ApplicationCard from "../../Components/ApplicationCard";
 import RoleCard from '../../Components/RoleCard'
 
 function Dashboard({ user, ...props }) {
-  
+  const {managedProductions, applications, roles} = {...user.relationships}
+
+  const renderManagedProductions = () => {
+    return managedProductions.data.map(production => {
+     return <ProductionCard key={production.id} productionId={production.id} />
+    })
+  }
+  // TODO: Build Application and Role Reducers/Actions
+  const renderRoles = () => {
+    return roles.data.map(role => {
+     return <RoleCard key={role.id} productionId={role.id} />
+    })
+  }
+  const renderApplications = () => {
+    return applications.data.map(application => {
+     return <ApplicationCard key={application.id} applicationId={application.id} />
+    })
+  }
+
+  // debugger
   return (
     <Box maxWidth='100%'>
       <NavBar />
@@ -21,9 +40,24 @@ function Dashboard({ user, ...props }) {
         {user.attributes.fullName}
       </Typography>
       <Grid container maxWidth='100%' gap={5} padding={2}>
+        {managedProductions.data.length ? 
         <CardBucket header="My Productions">
-          <ProductionCard />
-        </CardBucket>
+          {renderManagedProductions()}
+        </CardBucket> :
+        null
+        }
+        {roles.data.length ? 
+        <CardBucket header="My Roles">
+          {renderRoles()}
+        </CardBucket> :
+        null
+        }
+        {managedProductions.data.length ? 
+        <CardBucket header="My Applications">
+          {renderApplications()}
+        </CardBucket> :
+        null
+        }
         <CardBucket header="My Applications">
           <ApplicationCard/>
         </CardBucket>
