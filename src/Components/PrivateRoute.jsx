@@ -2,18 +2,15 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 import { authenticateJWT } from '../Actions/AuthActions'
+import { fetchUsers } from '../Actions/UserActions'
 
 
-function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
+function PrivateRoute({authenticateJWT, fetchUsers, isLoggedIn, errors, ...props}) {
   useEffect(() => {
-    const authenticate = async (jwt) => {
-      if (jwt) {
-        return await authenticateJWT(jwt)
-      }
-    }; 
-    authenticate(localStorage.getItem('jwt'))
+    authenticateJWT(localStorage.getItem('jwt'))
+    fetchUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[authenticateJWT, fetchUsers])
 
   if (!isLoggedIn && errors) {
     return <Navigate to='/'/>
@@ -24,4 +21,4 @@ function PrivateRoute({authenticateJWT, isLoggedIn, errors, ...props}) {
   }
 }
 
-export default connect(state => ({isLoggedIn: state.auth.isLoggedIn, errors: state.auth.errors}), {authenticateJWT})(PrivateRoute);
+export default connect(state => ({isLoggedIn: state.auth.isLoggedIn, errors: state.auth.errors}), {authenticateJWT, fetchUsers})(PrivateRoute);

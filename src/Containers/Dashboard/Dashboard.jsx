@@ -11,14 +11,8 @@ import CardBucket from "../../Components/CardBucket";
 import ProductionCard from "../../Components/ProductionCard";
 import ApplicationCard from "../../Components/ApplicationCard";
 import RoleCard from '../../Components/RoleCard'
-import { fetchUsers } from "../../Actions/UserActions";
-import { useEffect } from 'react'
 
-function Dashboard({ user, fetchUsers, ...props }) {
-  useEffect(() => {
-   fetchUsers()
-  }, [fetchUsers])
-  
+function Dashboard({ user, ...props }) {
   
   return (
     <Box maxWidth='100%'>
@@ -41,6 +35,6 @@ function Dashboard({ user, fetchUsers, ...props }) {
   );
 }
 
-export default connect((state) => ({ user: state.users.currentUser }), {fetchUsers})(
+export default connect((state) => ({ user: state.users.currentUser }))(
   Dashboard
 );
