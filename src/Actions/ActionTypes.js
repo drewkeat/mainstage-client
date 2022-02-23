@@ -8,6 +8,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS"
 // User Actions
 export const SET_CURRENT_USER = "SET_CURRENT_USER"
 export const CLEAR_CURRENT_USER = "CLEAR_CURRENT_USER"
+export const SET_USERS = "SET_USERS"
 // TODO: Build Production Actions and Reducer to Fetch associated productions from user relationships
 // Production Actions
 export const CREATE_PRODUCTION = "CREATE_PRODUCTION"
