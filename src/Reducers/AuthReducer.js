@@ -1,28 +1,28 @@
-import * as ACTION from '../Actions/ActionTypes'
+import * as ACTION from "../Actions/ActionTypes";
 
 const initialState = {
   loading: false,
   isLoggedIn: false,
-  errors: null
+  errors: null,
 };
 
 const Auth = (state = initialState, { type, payload }) => {
   switch (type) {
     case ACTION.FETCHING:
-      return {...state, loading: true}
+      return { ...state, loading: true };
     case ACTION.FETCH_COMPLETE:
-      return {...state, loading: false}
+      return { ...state, loading: false };
     case ACTION.LOGIN:
-      return {...state, isLoggedIn: true}
+      return { ...state, isLoggedIn: true };
     case ACTION.LOGOUT:
-      return {...state, isLoggedIn: false}
+      return { ...state, isLoggedIn: false };
     case ACTION.SET_ERRORS:
-      return {...state, errors: payload}
+      return { ...state, errors: payload };
     case ACTION.CLEAR_ERRORS:
-      return {...state, errors: null}
+      return { ...state, errors: null };
     default:
       return state;
   }
 };
 
-export default Auth
+export default Auth;

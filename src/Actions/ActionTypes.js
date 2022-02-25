@@ -13,3 +13,6 @@ export const SET_USERS = "SET_USERS"
 // Production Actions
 export const CREATE_PRODUCTION = "CREATE_PRODUCTION"
 export const FETCH_PRODUCTION = "FETCH_PRODUCTION"
+// Role Actions
+export const FETCH_ROLE = "FETCH_ROLE"
+// Application Actions

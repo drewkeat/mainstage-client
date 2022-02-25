@@ -1,15 +1,14 @@
-import * as ACTION from '../Actions/ActionTypes'
+import * as ACTION from "../Actions/ActionTypes";
 
-const initialState = {}
+const initialState = {};
 
 const Productions = (state = initialState, { type, payload }) => {
   switch (type) {
-
-  case ACTION.FETCH_PRODUCTION:
-    return { ...state, ...payload }
-  default:
-    return state
+    case ACTION.FETCH_PRODUCTION:
+      return { ...state, ...payload };
+    default:
+      return state;
   }
-}
+};
 
-export default Productions
+export default Productions;
