@@ -3,7 +3,6 @@ const InitialState = {};
 
 const Users = (state = InitialState, action) => {
   switch (action.type) {
-    // TODO: Adjust reducer to set relationships from api serializer
     case ACTION.SET_CURRENT_USER:
       let userId = Object.keys(action.payload)[0];
       let currentUser = action.payload[userId];
