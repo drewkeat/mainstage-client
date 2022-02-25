@@ -23,7 +23,7 @@ function Dashboard({ user, ...props }) {
   // TODO: Build Application and Role Reducers/Actions
   const renderRoles = () => {
     return roles.data.map(role => {
-     return <RoleCard key={role.id} productionId={role.id} />
+     return <RoleCard key={role.id} roleId={role.id} />
     })
   }
   const renderApplications = () => {
@@ -32,7 +32,6 @@ function Dashboard({ user, ...props }) {
     })
   }
 
-  // debugger
   return (
     <Box maxWidth='100%'>
       <NavBar />
@@ -58,12 +57,6 @@ function Dashboard({ user, ...props }) {
         </CardBucket> :
         null
         }
-        <CardBucket header="My Applications">
-          <ApplicationCard/>
-        </CardBucket>
-        <CardBucket header="My Roles">
-          <RoleCard />
-        </CardBucket>
       </Grid>
     </Box>
   );

@@ -1,13 +1,11 @@
-import {combineReducers} from 'redux'
-// TODO: Can reducers be consolidated to one line?
-import users from "./UserReducer";
-import auth from "./AuthReducer";
-import productions from './ProductionReducer'
+import { combineReducers } from "redux";
+import { users, auth, productions, roles } from ".";
 
 const rootReducer = combineReducers({
-  users,
   auth,
+  users,
   productions,
-})
+  roles,
+});
 
-export default rootReducer
+export default rootReducer;
