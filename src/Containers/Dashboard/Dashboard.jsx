@@ -45,18 +45,20 @@ function Dashboard({ user, ...props }) {
         </CardBucket> :
         null
         }
-        {roles.data.length ? 
         <CardBucket header="My Roles">
-          {renderRoles()}
-        </CardBucket> :
-        null
-        }
-        {managedProductions.data.length ? 
+          {roles.data.length ? 
+            renderRoles()
+          :
+            null
+          }
+        </CardBucket>
         <CardBucket header="My Applications">
-          {renderApplications()}
-        </CardBucket> :
-        null
-        }
+          {applications.data.length ? 
+            renderApplications()
+            :
+            null
+          }
+        </CardBucket>
       </Grid>
     </Box>
   );

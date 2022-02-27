@@ -8,8 +8,6 @@ import { fetchUsers } from '../Actions/UserActions'
 function PrivateRoute({authenticateJWT, fetchUsers, isLoggedIn, errors, ...props}) {
   useEffect(() => {
     authenticateJWT(localStorage.getItem('jwt'))
-    fetchUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[authenticateJWT, fetchUsers])
 
   if (!isLoggedIn && errors) {
