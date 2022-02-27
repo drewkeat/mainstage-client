@@ -4,7 +4,7 @@ const initialState = {};
 
 const Productions = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ACTION.FETCH_PRODUCTION:
+    case ACTION.SET_PRODUCTION:
       return { ...state, ...payload };
     default:
       return state;

@@ -14,7 +14,7 @@ const fetchRole = (roleId) => {
         const productionId = role[roleId].relationships.production.data.id
         // QUESTION: Dispatch isn't passed into this fetch request... how do I load related models into my store?
         fetchProduction(productionId)
-        dispatch({ type: ACTION.FETCH_ROLE, payload: role });
+        dispatch({ type: ACTION.SET_ROLE, payload: role });
         dispatch({ type: ACTION.FETCH_COMPLETE });
       })
       .catch((error) => {

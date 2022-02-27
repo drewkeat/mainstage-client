@@ -12,7 +12,7 @@ export const SET_USERS = "SET_USERS"
 // TODO: Build Production Actions and Reducer to Fetch associated productions from user relationships
 // Production Actions
 export const CREATE_PRODUCTION = "CREATE_PRODUCTION"
-export const FETCH_PRODUCTION = "FETCH_PRODUCTION"
+export const SET_PRODUCTION = "SET_PRODUCTION"
 // Role Actions
-export const FETCH_ROLE = "FETCH_ROLE"
+export const SET_ROLE = "SET_ROLE"
 // Application Actions

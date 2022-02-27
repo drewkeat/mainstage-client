@@ -9,7 +9,7 @@ const fetchProduction = (productionId) => {
     fetchFrom(`/productions/${productionId}`, {method: "GET"})
     .then(json => {
       const production = normalize(json).production
-      dispatch({type: ACTION.FETCH_PRODUCTION, payload: production})
+      dispatch({type: ACTION.SET_PRODUCTION, payload: production})
       dispatch({type: ACTION.FETCH_COMPLETE})
     })
     .catch(error => {
